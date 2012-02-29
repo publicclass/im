@@ -1,0 +1,21 @@
+{
+  "author": "Robert Sköld <robert@publicclass.se> (http://publicclass.se)",
+  "name": "im",
+  "description": "Stream-based ImageMagick wrapper.",
+  "version": "0.1.0",
+  "repository": {
+    "url": ""
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "engines": {
+    "node": "~0.6.11"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "*",
+    "superagent": "*"
+  },
+  "optionalDependencies": {}
+}
