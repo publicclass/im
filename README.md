@@ -12,14 +12,15 @@ $ npm install im
 ## Usage
 
 ```javascript
-// resize200.js
+// resizer.js
+var im = require('im');
 im(process.stdin)
-  .resize('200x200')
+  .resize(process.argv[2])
   .convert(process.stdout)
 ```
 
 ```bash
-$ curl http://placekitten.com/500/500 | node resize200.js
+$ curl http://placekitten.com/500/500 | node resizer.js 200x200 > 200.png
 ```
 
 ## Test
@@ -30,6 +31,10 @@ $ cd im
 $ npm i
 $ npm test
 ```
+
+Then open the `test/output` directory and make sure the results are correct.
+
+__Note:__ To test uploading to S3 the env variables: `S3_KEY`, `S3_SECRET` and `S3_BUCKET` must be set.
 
 ### Licence
 

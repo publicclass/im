@@ -7,7 +7,7 @@
     "url": ""
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha -t 10000"
   },
   "engines": {
     "node": "~0.6.11"
@@ -15,7 +15,8 @@
   "dependencies": {},
   "devDependencies": {
     "mocha": "*",
-    "superagent": "*"
+    "superagent": "*",
+    "knox": "git://github.com/sirlantis/knox.git"
   },
   "optionalDependencies": {}
 }
