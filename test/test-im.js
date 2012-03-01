@@ -61,7 +61,7 @@ describe('ImageMagick',function(){
 
     it('should send to s3',function(done){
       var input = request.get(url)
-        , output = s3.createWritableStream('/http_crop_40x40_resize_200x200.png');
+        , output = s3.createWriteStream('/http_crop_40x40_resize_200x200.png');
       im(input)
         .crop('40x40+90+90')
         .resize('200x200')
@@ -107,7 +107,7 @@ describe('ImageMagick',function(){
 
     it('should send to s3 (w. pipe)',function(done){
       var input = fs.createReadStream(path)
-        , output = s3.createWritableStream('/file_crop_40x40_resize_200x200.png');
+        , output = s3.createWriteStream('/file_crop_40x40_resize_200x200.png');
       im(input)
         .crop('40x40+90+90')
         .resize('200x200')
@@ -160,7 +160,7 @@ describe('ImageMagick',function(){
 
     it('should send to s3 (w. pipe)',function(done){
       var input = request.get(url)
-        , output = s3.createWritableStream('/s3_crop_40x40_resize_200x200.png');
+        , output = s3.createWriteStream('/s3_crop_40x40_resize_200x200.png');
       im(input)
         .crop('40x40+90+90')
         .resize('200x200')

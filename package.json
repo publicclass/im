@@ -16,7 +16,7 @@
   "devDependencies": {
     "mocha": "*",
     "superagent": "*",
-    "knox": "git://github.com/sirlantis/knox.git"
+    "knox": "git://github.com/slaskis/knox.git"
   },
   "optionalDependencies": {}
 }
