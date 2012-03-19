@@ -2,7 +2,7 @@
   "author": "Robert Sköld <robert@publicclass.se> (http://publicclass.se)",
   "name": "im",
   "description": "Stream-based ImageMagick wrapper.",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "repository": "git://github.com/publicclass/im",
   "scripts": {
     "test": "mocha -t 10000"

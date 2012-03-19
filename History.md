@@ -1,0 +1,30 @@
+
+0.2.0 / 2012-03-19
+==================
+
+  * Added `ImageMagick#autoOrient()`.
+  * Added `ImageMagick#extent()`.
+  * Added `ImageMagick#filter()`.
+  * Added `ImageMagick#gravity()`.
+  * Added `ImageMagick#liquidRescale()`.
+  * Added `ImageMagick#quality()`.
+  * Added `ImageMagick#rotate()`.
+  * Added `ImageMagick#sample()`.
+  * Added `ImageMagick#scale()`.
+  * Added `ImageMagick#sharpen()`.
+  * Added `ImageMagick#strip()`.
+  * Added `ImageMagick#thumbnail()`.
+  * Added `ImageMagick#unsharp()`.
+
+0.1.1 / 2012-02-29
+==================
+
+  * Added `ImageMagick#format()`.
+  * Loosened node engine dependency.
+  * Using [slaskis knox fork](https://github.com/slaskis/knox) instead to get 
+    the streaming to work more reliably. 
+
+0.1.0 / 2012-02-29
+==================
+
+  * Initial release
