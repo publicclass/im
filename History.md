@@ -1,4 +1,10 @@
 
+0.2.1 / 2012-05-29
+==================
+
+  * Added `ImageMagick#define()`.
+  * Asserts that the `ImageMagick#quality()`-argument is a number.
+
 0.2.0 / 2012-03-19
 ==================
 
