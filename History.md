@@ -1,4 +1,11 @@
 
+0.2.2 / 2012-06-14
+==================
+
+  * Added `ImageMagick#layers()`.
+  * Added `ImageMagick#coalesce()`.
+
+
 0.2.1 / 2012-05-29
 ==================
 
