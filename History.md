@@ -1,4 +1,10 @@
 
+0.2.3 / 2012-06-19
+==================
+
+  * Fixed `ImageMagick#coalesce()`, boolean commands don't need any arguments.
+  
+
 0.2.2 / 2012-06-14
 ==================
 
