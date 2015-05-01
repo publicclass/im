@@ -27,7 +27,7 @@ describe('ImageMagick', function() {
     fs.mkdir(dir, function() { next(); });
   });
 
-  describe.skip('http', function() {
+  describe('http', function() {
     var url = 'http://placekitten.com/500/500';
 
     it('should crop', function(done) {
@@ -63,9 +63,9 @@ describe('ImageMagick', function() {
       var input = request.get(url);
       im(input)
         .identify(function(err, ident) {
-          assert(typeof ident == 'object');
-          assert(typeof ident.gamma == 'number');
-          assert(typeof ident.quality == 'number');
+          assert(typeof ident === 'object');
+          assert(typeof ident.gamma === 'number');
+          assert(typeof ident.quality === 'number');
           assert(ident.verbose === true);
           done(err);
         });
@@ -213,9 +213,9 @@ describe('ImageMagick', function() {
       var input = request.get(url);
       im(input)
         .identify(function(err, ident) {
-          assert(typeof ident == 'object');
-          assert(typeof ident.gamma == 'number');
-          assert(typeof ident.quality == 'number');
+          assert(typeof ident === 'object');
+          assert(typeof ident.gamma === 'number');
+          assert(typeof ident.quality === 'number');
           assert(ident.verbose === true);
           done(err);
         });
