@@ -119,6 +119,15 @@ describe('ImageMagick', function() {
         .on('end', done);
     });
 
+    it('should make a progressive JPEG', function(done) {
+      var input = fs.createReadStream(file)
+        , output = fs.createWriteStream(path.resolve(dir, 'file_progressive.jpg'));
+      im(input)
+        .interlace('plane')
+        .convert(output)
+        .on('end', done);
+    });
+
     it('should identify', function(done) {
       var input = fs.createReadStream(file);
       im(input)
