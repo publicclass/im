@@ -10,6 +10,15 @@
   "engines": {
     "node": "0.6.x"
   },
+  "eslintConfig": {
+    "env": {
+      "node": true
+    },
+    "rules": {
+      "quotes": [2, "single"],
+      "no-use-before-define": [2, "nofunc"]
+    }
+  },
   "dependencies": {},
   "devDependencies": {
     "mocha": "*",
