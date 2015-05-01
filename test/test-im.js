@@ -4,6 +4,7 @@
 var im = require('../');
 var fs = require('fs');
 var path = require('path');
+var assert = require('assert');
 var request = require('superagent');
 var s3;
 
@@ -20,13 +21,13 @@ if( process.env.S3_KEY && process.env.S3_SECRET && process.env.S3_BUCKET ){
 
 describe('ImageMagick', function() {
 
-  var dir = path.resolve(__dirname, '/output');
+  var dir = path.resolve(__dirname, 'output');
 
   before(function(next) {
     fs.mkdir(dir, function() { next(); });
   });
 
-  describe('http', function() {
+  describe.skip('http', function() {
     var url = 'http://placekitten.com/500/500';
 
     it('should crop', function(done) {
@@ -58,6 +59,19 @@ describe('ImageMagick', function() {
         .on('end', done);
     });
 
+    it('should identify', function(done) {
+      var input = request.get(url);
+      im(input)
+        .identify(function(err, ident) {
+          assert(typeof ident == 'object');
+          assert(typeof ident.gamma == 'number');
+          assert(typeof ident.quality == 'number');
+          assert(ident.verbose === true);
+          done(err);
+        });
+    });
+
+
     if( !s3 ) {
       return;
     }
@@ -75,11 +89,11 @@ describe('ImageMagick', function() {
   });
 
   describe('fs', function() {
-    var file = path.resolve(__dirname, '/400.jpg');
+    var file = path.resolve(__dirname, '400.jpg');
 
     it('should crop', function(done) {
       var input = fs.createReadStream(file)
-        , output = fs.createWriteStream(path.resolve(dir, '/file_crop_40x40.jpg'));
+        , output = fs.createWriteStream(path.resolve(dir, 'file_crop_40x40.jpg'));
       im(input)
         .crop('40x40+90+90')
         .convert(output)
@@ -88,7 +102,7 @@ describe('ImageMagick', function() {
 
     it('should resize', function(done) {
       var input = fs.createReadStream(file)
-        , output = fs.createWriteStream(path.resolve(dir, '/file_resize_200x200.jpg'));
+        , output = fs.createWriteStream(path.resolve(dir, 'file_resize_200x200.jpg'));
       im(input)
         .resize('200x200')
         .convert(output)
@@ -97,12 +111,24 @@ describe('ImageMagick', function() {
 
     it('should crop and resize', function(done) {
       var input = fs.createReadStream(file)
-        , output = fs.createWriteStream(path.resolve(dir, '/file_resize_200x200_crop_40x40.jpg'));
+        , output = fs.createWriteStream(path.resolve(dir, 'file_resize_200x200_crop_40x40.jpg'));
       im(input)
         .crop('40x40+90+90')
         .resize('200x200')
         .convert(output)
         .on('end', done);
+    });
+
+    it('should identify', function(done) {
+      var input = fs.createReadStream(file);
+      im(input)
+        .identify(function(err, ident) {
+          assert(typeof ident === 'object');
+          assert(typeof ident.gamma === 'number');
+          assert(typeof ident.quality === 'number');
+          assert(ident.verbose === true);
+          done(err);
+        });
     });
 
     if( !s3 ) {
@@ -173,6 +199,19 @@ describe('ImageMagick', function() {
         .pipe(output)
           .on('response', function(){ done(); });
     });
+
+    it('should identify', function(done) {
+      var input = request.get(url);
+      im(input)
+        .identify(function(err, ident) {
+          assert(typeof ident == 'object');
+          assert(typeof ident.gamma == 'number');
+          assert(typeof ident.quality == 'number');
+          assert(ident.verbose === true);
+          done(err);
+        });
+    });
+
 
   });
 
