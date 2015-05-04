@@ -32,7 +32,7 @@ describe('ImageMagick', function() {
 
     it('should crop', function(done) {
       var input = request.get(url)
-        , output = fs.createWriteStream(path.resolve(dir, '/http_crop_40x40.png'));
+        , output = fs.createWriteStream(path.resolve(dir, 'http_crop_40x40.png'));
       im(input)
         .crop('40x40+90+90')
         .convert(output)
@@ -41,7 +41,7 @@ describe('ImageMagick', function() {
 
     it('should resize (w. pipe)', function(done) {
       var input = request.get(url)
-        , output = fs.createWriteStream(path.resolve(dir, '/http_resize_200x200.png'));
+        , output = fs.createWriteStream(path.resolve(dir, 'http_resize_200x200.png'));
       im(input)
         .resize('200x200')
         .convert()
@@ -51,7 +51,7 @@ describe('ImageMagick', function() {
 
     it('should crop and resize', function(done) {
       var input = request.get(url)
-        , output = fs.createWriteStream(path.resolve(dir, '/http_crop_40x40_resize_200x200.png'));
+        , output = fs.createWriteStream(path.resolve(dir, 'http_crop_40x40_resize_200x200.png'));
       im(input)
         .crop('40x40+90+90')
         .resize('200x200')
@@ -63,6 +63,9 @@ describe('ImageMagick', function() {
       var input = request.get(url);
       im(input)
         .identify(function(err, ident) {
+          if (err) {
+            return done(err);
+          }
           assert(typeof ident === 'object');
           assert(typeof ident.gamma === 'number');
           assert(typeof ident.quality === 'number');
