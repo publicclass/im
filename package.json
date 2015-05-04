@@ -5,7 +5,7 @@
   "version": "0.3.1",
   "repository": "git://github.com/publicclass/im",
   "scripts": {
-    "test": "mocha -t 10000"
+    "test": "mocha -t 10s -r should -b"
   },
   "engines": {
     "node": ">= 0.6.x"
@@ -29,6 +29,7 @@
   "devDependencies": {
     "mocha": "2.2.4",
     "s3fs": "^2.0.1",
+    "should": "1.x.x",
     "superagent": "1.2.0"
   },
   "optionalDependencies": {}

@@ -1,0 +1,2 @@
+convert: no decode delegate for this image format `/var/folders/_n/pchsjj1d6jqdkd05yjx2tz0c0000gn/T/magick-mI6bV7wa\' @ error/constitute.c/ReadImage/532.
+convert: invalid argument for option `-resize\': 800+0+0 @ error/convert.c/ConvertImageCommand/2355.

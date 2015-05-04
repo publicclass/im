@@ -1,0 +1,82 @@
+Image: /var/folders/_n/pchsjj1d6jqdkd05yjx2tz0c0000gn/T/magick-AvR72l6Z
+  Base filename: -
+  Format: JPEG (Joint Photographic Experts Group JFIF format)
+  Class: DirectClass
+  Geometry: 450x450+0+0
+  Resolution: 72x72
+  Print size: 6.25x6.25
+  Units: Undefined
+  Type: TrueColor
+  Endianess: Undefined
+  Colorspace: sRGB
+  Depth: 8-bit
+  Channel depth:
+    red: 8-bit
+    green: 8-bit
+    blue: 8-bit
+  Channel statistics:
+    Red:
+      min: 0 (0)
+      max: 255 (1)
+      mean: 128.454 (0.503741)
+      standard deviation: 66.9518 (0.262556)
+      kurtosis: -0.845116
+      skewness: -0.164889
+    Green:
+      min: 0 (0)
+      max: 255 (1)
+      mean: 102.977 (0.403832)
+      standard deviation: 61.6511 (0.241769)
+      kurtosis: -0.739163
+      skewness: 0.235003
+    Blue:
+      min: 0 (0)
+      max: 255 (1)
+      mean: 93.9935 (0.368602)
+      standard deviation: 63.977 (0.25089)
+      kurtosis: -0.743236
+      skewness: 0.393143
+  Image statistics:
+    Overall:
+      min: 0 (0)
+      max: 255 (1)
+      mean: 108.475 (0.425392)
+      standard deviation: 64.23 (0.251882)
+      kurtosis: -0.661176
+      skewness: 0.177959
+  Rendering intent: Perceptual
+  Gamma: 0.45455
+  Chromaticity:
+    red primary: (0.64,0.33)
+    green primary: (0.3,0.6)
+    blue primary: (0.15,0.06)
+    white point: (0.3127,0.329)
+  Interlace: None
+  Background color: white
+  Border color: srgb(223,223,223)
+  Matte color: grey74
+  Transparent color: black
+  Compose: Over
+  Page geometry: 450x450+0+0
+  Dispose: Undefined
+  Iterations: 0
+  Compression: JPEG
+  Quality: 85
+  Orientation: Undefined
+  Properties:
+    comment: CREATOR: gd-jpeg v1.0 (using IJG JPEG v62), quality = 85
+
+    date:create: 2012-05-11T17:08:42+02:00
+    date:modify: 2012-05-11T17:08:42+02:00
+    jpeg:colorspace: 2
+    jpeg:sampling-factor: 2x2,1x1,1x1
+    signature: a8baef698c627868e898930c8f6ef8bfc881d0dd4247d2f4c9b2b38496cc6af4
+  Artifacts:
+    verbose: true
+  Tainted: False
+  Filesize: 43.2KB
+  Number pixels: 202K
+  Pixels per second: 2.025PB
+  User time: 0.010u
+  Elapsed time: 0:01.000
+  Version: ImageMagick 6.7.5-7 2012-02-28 Q16 http://www.imagemagick.org

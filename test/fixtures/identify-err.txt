@@ -1,0 +1,2 @@
+identify: Premature end of JPEG file `/var/folders/_n/pchsjj1d6jqdkd05yjx2tz0c0000gn/T/magick-fECuVcfB' @ warning/jpeg.c/JPEGWarningHandler/325.
+identify: Corrupt JPEG data: premature end of data segment `/var/folders/_n/pchsjj1d6jqdkd05yjx2tz0c0000gn/T/magick-fECuVcfB' @ warning/jpeg.c/JPEGWarningHandler/325.
