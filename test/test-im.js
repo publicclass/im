@@ -11,10 +11,10 @@ var s3;
 
 // only run S3 tests when ENV keys are set
 if( process.env.S3_KEY && process.env.S3_SECRET && process.env.S3_BUCKET ){
-  s3 = require('knox').createClient({
-    key: process.env.S3_KEY,
-    secret: process.env.S3_SECRET,
-    bucket: process.env.S3_BUCKET
+  var S3FS = require('s3fs');
+  s3 = new S3FS(process.env.S3_BUCKET, {
+    accessKeyId: process.env.S3_KEY,
+    secretAccessKey: process.env.S3_SECRET
   });
 }
 
@@ -81,7 +81,7 @@ describe('ImageMagick', function() {
         .resize('200x200')
         .convert(output)
         .on('error', function(err) {
-          assert(err.message == 'no images defined');
+          assert(err.message === 'no images defined');
           done();
         });
     })
@@ -166,7 +166,7 @@ describe('ImageMagick', function() {
         .resize('200x200')
         .convert()
         .pipe(output)
-          .on('response', function() { done(); });
+          .on('finish', function() { done(); });
     });
 
   });
@@ -177,16 +177,29 @@ describe('ImageMagick', function() {
 
   describe('s3', function() {
 
-    // TODO I would like to use `s3.get()` but it returns a ClientRequest
-    //      which doesn't pass along the events as nicely as superagent...
+    var file = '/file_crop_40x40_resize_200x200.png';
 
-    var file = '/file_crop_40x40_resize_200x200.png'
-      , expiration = new Date(Date.now() + 1000 * 60 * 60 * 24)
-      , url = s3.signedUrl(file, expiration);
+    before(function(done) {
+      s3.exists(file).then(function(exists) {
+        if (!exists) {
+          return new Promise(function(resolve, reject) {
+            var local = path.resolve(dir, 'file_resize_200x200_crop_40x40.jpg');
+            fs.readFile(local, function(err, data) {
+              if (err) { return reject(err); }
+              resolve(data);
+            });
+          }).then(function(data) {
+            return s3.writeFile(file, data);
+          });
+        } else {
+          return Promise.resolve();
+        }
+      }).then(done, done);
+    });
 
     it('should crop', function(done) {
-      var input = request.get(url)
-        , output = fs.createWriteStream(path.resolve(dir, '/s3_crop_40x40.jpg'));
+      var input = s3.createReadStream(file);
+      var output = fs.createWriteStream(path.resolve(dir, 's3_crop_40x40.jpg'));
       im(input)
         .crop('40x40+90+90')
         .convert(output)
@@ -194,8 +207,8 @@ describe('ImageMagick', function() {
     });
 
     it('should resize', function(done) {
-      var input = request.get(url)
-        , output = fs.createWriteStream(path.resolve(dir, '/s3_resize_200x200.jpg'));
+      var input = s3.createReadStream(file);
+      var output = fs.createWriteStream(path.resolve(dir, 's3_resize_200x200.jpg'));
       im(input)
         .resize('200x200')
         .convert(output)
@@ -203,8 +216,8 @@ describe('ImageMagick', function() {
     });
 
     it('should crop and resize', function(done) {
-      var input = request.get(url)
-        , output = fs.createWriteStream(path.resolve(dir, '/s3_resize_200x200_crop_40x40.jpg'));
+      var input = s3.createReadStream(file);
+      var output = fs.createWriteStream(path.resolve(dir, 's3_resize_200x200_crop_40x40.jpg'));
       im(input)
         .crop('40x40+90+90')
         .resize('200x200')
@@ -213,18 +226,18 @@ describe('ImageMagick', function() {
     });
 
     it('should send to s3 (w. pipe)', function(done) {
-      var input = request.get(url)
-        , output = s3.createWriteStream('/s3_crop_40x40_resize_200x200.png');
+      var input = s3.createReadStream(file);
+      var output = s3.createWriteStream('/s3_crop_40x40_resize_200x200.png');
       im(input)
         .crop('40x40+90+90')
         .resize('200x200')
         .convert()
         .pipe(output)
-          .on('response', function(){ done(); });
+          .on('finish', function(){ done(); });
     });
 
     it('should identify', function(done) {
-      var input = request.get(url);
+      var input = s3.createReadStream(file);
       im(input)
         .identify(function(err, ident) {
           assert(typeof ident === 'object');
