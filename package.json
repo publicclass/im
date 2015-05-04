@@ -27,8 +27,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "mocha": "*",
-    "superagent": "*",
+    "mocha": "2.2.4",
+    "superagent": "1.2.2",
     "knox": "git://github.com/slaskis/knox.git"
   },
   "optionalDependencies": {}
