@@ -1,9 +1,16 @@
 
+0.3.0 / 2015-05-04
+==================
+
+  * Added ImageMagick#interlace(). To be able to make progressive jpegs/
+  * Added ImageMagick#identify()
+
+
 0.2.3 / 2012-06-19
 ==================
 
   * Fixed `ImageMagick#coalesce()`, boolean commands don't need any arguments.
-  
+
 
 0.2.2 / 2012-06-14
 ==================
@@ -40,8 +47,8 @@
 
   * Added `ImageMagick#format()`.
   * Loosened node engine dependency.
-  * Using [slaskis knox fork](https://github.com/slaskis/knox) instead to get 
-    the streaming to work more reliably. 
+  * Using [slaskis knox fork](https://github.com/slaskis/knox) instead to get
+    the streaming to work more reliably.
 
 0.1.0 / 2012-02-29
 ==================
