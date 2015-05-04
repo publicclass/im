@@ -1,4 +1,14 @@
 
+0.3.1 / 2015-05-04
+==================
+
+  * Added travis tests
+  * Parse the error message from ImageMagick#convert()
+  * Added error code for failed input streams
+  * Added identify to the exports.commands
+  * Fixed the paths and URLs in the http tests
+
+
 0.3.0 / 2015-05-04
 ==================
 
