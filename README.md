@@ -1,6 +1,8 @@
 # im
 
-The Stream-based [ImageMagick](http://www.imagemagick.org/) wrapper 
+[![Build Status](https://travis-ci.org/publicclass/im.svg?branch=master)](https://travis-ci.org/publicclass/im)
+
+The Stream-based [ImageMagick](http://www.imagemagick.org/) wrapper
 for [Node.JS](http://nodejs.org/).
 
 ## Install
@@ -34,7 +36,7 @@ $ npm test
 
 Then open the `test/output` directory and make sure the results are correct.
 
-__Note:__ To test uploading to S3 the env variables: `S3_KEY`, `S3_SECRET` 
+__Note:__ To test uploading to S3 the env variables: `S3_KEY`, `S3_SECRET`
 and `S3_BUCKET` must be set.
 
 ### Licence
