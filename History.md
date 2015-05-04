@@ -1,4 +1,10 @@
 
+0.4.0 / 2015-05-05
+==================
+
+  * Added original tests for ident
+  * Fixed ident to parse properly according to fixtures (breaking change)
+
 0.3.1 / 2015-05-04
 ==================
 
