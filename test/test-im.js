@@ -28,7 +28,7 @@ describe('ImageMagick', function() {
   });
 
   describe('http', function() {
-    var url = 'http://placekitten.com/500/500';
+    var url = 'http://httpbin.org/image/png';
 
     it('should crop', function(done) {
       var input = request.get(url)
@@ -68,12 +68,23 @@ describe('ImageMagick', function() {
           }
           assert(typeof ident === 'object');
           assert(typeof ident.gamma === 'number');
-          assert(typeof ident.quality === 'number');
           assert(ident.verbose === true);
           done(err);
         });
     });
 
+    it('should fail on non-image streams', function(done) {
+      var input = request.get('http://httpbin.org/get')
+        , output = fs.createWriteStream(path.resolve(dir, 'http_json_fail.png'));
+      im(input)
+        .crop('40x40+90+90')
+        .resize('200x200')
+        .convert(output)
+        .on('error', function(err) {
+          assert(err.message == 'no images defined');
+          done();
+        });
+    })
 
     if( !s3 ) {
       return;
