@@ -28,7 +28,7 @@ describe('ImageMagick', function() {
   });
 
   describe('http', function() {
-    var url = 'http://httpbin.org/image/png';
+    var url = 'http://ia600604.us.archive.org/21/items/5574288223_f1de5c4692_o/5574288223_f1de5c4692_o_thumb.jpg';
 
     it('should crop', function(done) {
       var input = request.get(url)
